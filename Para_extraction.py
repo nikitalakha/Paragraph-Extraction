@@ -7,11 +7,12 @@ def extract_paragraphs(file_path):
     total_lines = len(lines)
 
     first_paragraph = ""
-    for line in lines:
-        if line.strip():  
-            first_paragraph += line
-        else:
-            break  
+    i = 0
+    while i < total_lines and not lines[i].strip():
+        i += 1
+    while i < total_lines and lines[i].strip():
+        first_paragraph += lines[i]
+        i += 1 
 
     #middle paragraph
     middle_line_index = total_lines // 2
